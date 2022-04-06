@@ -1,0 +1,16 @@
+E:\Studia\StudiaSemIV\ProgramowanieObiektowe\QuizGenerator\bin\Debug\QuizGenerator.exe.config
+E:\Studia\StudiaSemIV\ProgramowanieObiektowe\QuizGenerator\bin\Debug\QuizGenerator.exe
+E:\Studia\StudiaSemIV\ProgramowanieObiektowe\QuizGenerator\bin\Debug\QuizGenerator.pdb
+E:\Studia\StudiaSemIV\ProgramowanieObiektowe\QuizGenerator\obj\Debug\QuizGenerator.csproj.AssemblyReference.cache
+E:\Studia\StudiaSemIV\ProgramowanieObiektowe\QuizGenerator\obj\Debug\QuizGenerator.csproj.SuggestedBindingRedirects.cache
+E:\Studia\StudiaSemIV\ProgramowanieObiektowe\QuizGenerator\obj\Debug\MainWindow.g.cs
+E:\Studia\StudiaSemIV\ProgramowanieObiektowe\QuizGenerator\obj\Debug\App.g.cs
+E:\Studia\StudiaSemIV\ProgramowanieObiektowe\QuizGenerator\obj\Debug\QuizGenerator_MarkupCompile.cache
+E:\Studia\StudiaSemIV\ProgramowanieObiektowe\QuizGenerator\obj\Debug\QuizGenerator_MarkupCompile.lref
+E:\Studia\StudiaSemIV\ProgramowanieObiektowe\QuizGenerator\obj\Debug\MainWindow.baml
+E:\Studia\StudiaSemIV\ProgramowanieObiektowe\QuizGenerator\obj\Debug\QuizGenerator.g.resources
+E:\Studia\StudiaSemIV\ProgramowanieObiektowe\QuizGenerator\obj\Debug\QuizGenerator.Properties.Resources.resources
+E:\Studia\StudiaSemIV\ProgramowanieObiektowe\QuizGenerator\obj\Debug\QuizGenerator.csproj.GenerateResource.cache
+E:\Studia\StudiaSemIV\ProgramowanieObiektowe\QuizGenerator\obj\Debug\QuizGenerator.csproj.CoreCompileInputs.cache
+E:\Studia\StudiaSemIV\ProgramowanieObiektowe\QuizGenerator\obj\Debug\QuizGenerator.exe
+E:\Studia\StudiaSemIV\ProgramowanieObiektowe\QuizGenerator\obj\Debug\QuizGenerator.pdb

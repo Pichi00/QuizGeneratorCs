@@ -9,6 +9,6 @@ namespace QuizGenerator
     internal interface IEncryption
     {
         string Encrypt(Quiz quiz);
-        string Decrypt(Quiz quiz);
+        string Decrypt(string text);
     }
 }

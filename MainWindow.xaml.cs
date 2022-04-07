@@ -65,7 +65,7 @@ namespace QuizGenerator
         {
             Cesar cesar = new Cesar();
             QuizMeneger qm = new QuizMeneger(quiz, cesar);
-            qm.saveQuizToFile("quiz.txt");
+            qm.saveQuizToFile("quiz1.txt");
         }
     }
 }

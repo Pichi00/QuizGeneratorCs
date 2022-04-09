@@ -136,7 +136,7 @@ namespace QuizGenerator
                 Console.WriteLine(filepath);
                 quiz.QuizName = textBoxQuizName.Text;
                 Cesar cesar = new Cesar();
-                QuizMeneger qm = new QuizMeneger(quiz, cesar);
+                QuizManager qm = new QuizManager(quiz, cesar);
                 qm.saveQuizToFile(filepath);
             }
 
@@ -156,10 +156,7 @@ namespace QuizGenerator
             {
                 var filepath = openFileDialog.FileName;
                 Console.WriteLine(filepath); //Wyświetli w konsoli ścieżkę wybranego pliku
-
-                Cesar cesar = new Cesar();
-                QuizMeneger qm = new QuizMeneger(quiz, cesar);
-                quiz = qm.loadQuizFromFile(filepath);
+                //Tu do dokończenia
             }
 
         }

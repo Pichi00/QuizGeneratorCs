@@ -59,7 +59,7 @@
     <Compile Include="IEncryption.cs" />
     <Compile Include="Question.cs" />
     <Compile Include="Quiz.cs" />
-    <Compile Include="QuizMeneger.cs" />
+    <Compile Include="QuizManager.cs" />
     <Page Include="MainWindow.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>

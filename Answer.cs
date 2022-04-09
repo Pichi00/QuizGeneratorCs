@@ -17,7 +17,13 @@ namespace QuizGenerator
             Correct = correct;
         }
 
-        public int isCorrect()
+        public bool isCorrect()
+        {
+            if (Correct) { return true; }
+            return false;
+        }
+
+        public int isCorrectInt()
         {
             if (Correct) { return 1; }
             return 0;

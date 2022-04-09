@@ -8,8 +8,8 @@ namespace QuizGenerator
 {
     internal class Quiz
     {
-        private List<Question> questions = new List<Question>();
-
+        public List<Question> questions = new List<Question>();
+        public string QuizName { get; set; }
         public void addQuestion(Question q)
         {
             questions.Add(q);
@@ -28,12 +28,18 @@ namespace QuizGenerator
             return questions.Find(x => x.Text == text);
         }
 
+        public bool hasQuestions()
+        {
+            if (questions.Any()) return true;
+            return false;
+        }
+
         public override string ToString()
         {
-            string result = "";
+            string result = QuizName+'\n';
             foreach (Question question in questions)
             {
-                result+=question.ToString()+'\n';
+                result+=question.ToString();
             }
             return result;
         }

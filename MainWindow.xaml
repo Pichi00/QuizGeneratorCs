@@ -5,7 +5,7 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:QuizGenerator"
         mc:Ignorable="d"
-        Title="MainWindow" Height="480" Width="800">
+        Title="MainWindow" Height="580" Width="800">
     <Window.Resources>
         <Style TargetType="Label">
             <Setter Property="FontSize" Value="20"/>
@@ -22,12 +22,34 @@
             <Setter Property="Margin" Value="10,10,10,0"/>
         </Style>
     </Window.Resources>
+    
     <Grid>
         <Grid.ColumnDefinitions>
             <ColumnDefinition Width="11*"/>
             <ColumnDefinition Width="9*"/>
         </Grid.ColumnDefinitions>
-        <StackPanel Background="Azure">
+        <Grid.RowDefinitions>
+            <RowDefinition Height="1*"/>
+            <RowDefinition Height="5*"/>
+        </Grid.RowDefinitions>
+        <StackPanel>
+            <Label Content="Nazwa Quizu"/>
+            <TextBox x:Name="textBoxQuizName"/>
+        </StackPanel>
+
+        <Grid Margin="10" Grid.Column="1" >
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="1*"/>
+                <ColumnDefinition Width="1*"/>
+                <ColumnDefinition Width="1*"/>
+            </Grid.ColumnDefinitions>
+            <Button x:Name="buttonNewQuiz"  Content="Nowy quiz" Grid.Column="0" />
+            <Button x:Name="buttonSaveQuiz" Content="Zapisz quiz" Grid.Column="1"/>
+            <Button x:Name="buttonLoadQUiz" Content="Wczytaj quiz" Grid.Column="2" />
+        </Grid>
+
+
+        <StackPanel Background="Azure" Grid.Row="1">
             <Label Content="Treść pytania"/>
             <TextBox x:Name="textBoxQuestion"/>
 
@@ -68,7 +90,7 @@
                     <ColumnDefinition Width="1*"/>
                 </Grid.ColumnDefinitions>
                 <TextBox x:Name="textBoxAnswer4" Grid.Column="0"/>
-                <CheckBox x:Name="checkBoxAnswer4" Grid.Column="1"/>
+                <CheckBox x:Name="checkBoxAnswer4" Grid.Column="1" />
             </Grid>
 
             <Grid Margin="0,10,0,0">
@@ -77,13 +99,14 @@
                     <ColumnDefinition Width="1*"/>
                     <ColumnDefinition Width="1*"/>
                 </Grid.ColumnDefinitions>
-                <Button x:Name="buttonAdd"  Content="Dodaj" Grid.Column="0" Click="buttonAdd_Click"/>
-                <Button x:Name="buttonEdit" Content="Edytuj" Grid.Column="1"/>
-                <Button x:Name="buttonDelete" Content="Usuń" Grid.Column="2" Click="buttonDelete_Click"/>
+                <Button x:Name="buttonAdd"  Content="Dodaj pytanie" Grid.Column="0" Click="buttonAdd_Click"/>
+                <Button x:Name="buttonEdit" Content="Edytuj pytania" Grid.Column="1" Click="buttonEdit_Click"/>
+                <Button x:Name="buttonDelete" Content="Usuń pytanie" Grid.Column="2" Click="buttonDelete_Click"/>
             </Grid>
         </StackPanel>
         <ListBox x:Name="listBoxQuestions" 
                  Grid.Column="1"
+                 Grid.Row="1"
                  SelectionChanged="listBoxQuestions_SelectionChanged"
                  />
     </Grid>

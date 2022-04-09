@@ -22,10 +22,10 @@ namespace QuizGenerator
         {
             //return Text;
             return  $"{Text}\n" +
-                    $"{answers[0]} {answers[0].isCorrect()}\n" +
-                    $"{answers[1]} {answers[1].isCorrect()}\n" +
-                    $"{answers[2]} {answers[2].isCorrect()}\n" +
-                    $"{answers[3]} {answers[3].isCorrect()}";
+                    $"{answers[0]} {answers[0].isCorrectInt()}\n" +
+                    $"{answers[1]} {answers[1].isCorrectInt()}\n" +
+                    $"{answers[2]} {answers[2].isCorrectInt()}\n" +
+                    $"{answers[3]} {answers[3].isCorrectInt()}\n";
 
         }
     }

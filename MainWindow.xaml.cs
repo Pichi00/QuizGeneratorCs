@@ -37,35 +37,82 @@ namespace QuizGenerator
             
             Question question = new Question(textBoxQuestion.Text, answers);
             listBoxQuestions.Items.Add(question);
-            quiz.addQuestion(question);
+            quiz.addQuestion(question);            
             autosave(quiz);
-            
+            clearBoxes();
+
+        }
+
+        private void buttonEdit_Click(object sender, RoutedEventArgs e)
+        {
+
         }
 
         private void buttonDelete_Click(object sender, RoutedEventArgs e)
         {
-            Question question = quiz.findQuestion(textBoxQuestion.Text);
-            quiz.remQuestion(question);
-            listBoxQuestions.Items.Remove(listBoxQuestions.SelectedItem);
-            Console.WriteLine(quiz);
+            ListBox lbox = listBoxQuestions;
+            var id = lbox.SelectedIndex;
+            if (lbox.SelectedIndex > -1 && id > -1 && quiz.questions[id] != null)
+            {
+                Question question = quiz.questions[id];
+                quiz.questions.Remove(question);
+                listBoxQuestions.Items.Remove(listBoxQuestions.SelectedItem);
+                Console.WriteLine(quiz);
+                clearBoxes();
+            }
+            
         }
 
         private void listBoxQuestions_SelectionChanged(object sender, SelectionChangedEventArgs e)
         {
             var lbox = sender as ListBox;
-            var item = lbox.SelectedItem as Question;
-            if ((lbox.SelectedItems.Count > -1) && (item != null))
-            {
-                textBoxQuestion.Text = item.Text;
-            }
+            var id = lbox.SelectedIndex;
+            Console.WriteLine(id);
+            if (lbox.SelectedIndex > -1 && id > -1 && quiz.questions[id] != null)
+            {                
+          
+                Question question = quiz.questions[id];
+                var a1 = question.answers[0];
+                var a2 = question.answers[1];
+                var a3 = question.answers[2];
+                var a4 = question.answers[3];
+            
+                textBoxQuestion.Text = question.Text;
+                textBoxAnswer1.Text = a1.Text;
+                textBoxAnswer2.Text = a2.Text;
+                textBoxAnswer3.Text = a3.Text;
+                textBoxAnswer4.Text = a4.Text;
 
+                checkBoxAnswer1.IsChecked = a1.isCorrect();
+                checkBoxAnswer2.IsChecked = a2.isCorrect();
+                checkBoxAnswer3.IsChecked = a3.isCorrect();
+                checkBoxAnswer4.IsChecked = a4.isCorrect();
+            }
+            
         }
 
         private void autosave(Quiz quiz)
         {
+            quiz.QuizName = textBoxQuizName.Text;
             Cesar cesar = new Cesar();
             QuizMeneger qm = new QuizMeneger(quiz, cesar);
             qm.saveQuizToFile("quiz1.txt");
+
         }
+
+        private void clearBoxes()
+        {
+            textBoxQuestion.Text = "";
+            textBoxAnswer1.Text = "";
+            textBoxAnswer2.Text = "";
+            textBoxAnswer3.Text = "";
+            textBoxAnswer4.Text = "";
+            checkBoxAnswer1.IsChecked = false;
+            checkBoxAnswer2.IsChecked = false;
+            checkBoxAnswer3.IsChecked = false;
+            checkBoxAnswer4.IsChecked = false;
+        }
+
+        
     }
 }

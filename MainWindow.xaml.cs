@@ -12,6 +12,8 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
+using System.IO;
+using Microsoft.Win32;
 
 namespace QuizGenerator
 {
@@ -38,7 +40,7 @@ namespace QuizGenerator
             Question question = new Question(textBoxQuestion.Text, answers);
             listBoxQuestions.Items.Add(question);
             quiz.addQuestion(question);            
-            autosave(quiz);
+            //autosave(quiz);
             clearBoxes();
 
         }
@@ -91,14 +93,14 @@ namespace QuizGenerator
             
         }
 
-        private void autosave(Quiz quiz)
+       /* private void autosave(Quiz quiz)
         {
             quiz.QuizName = textBoxQuizName.Text;
             Cesar cesar = new Cesar();
             QuizMeneger qm = new QuizMeneger(quiz, cesar);
             qm.saveQuizToFile("quiz1.txt");
 
-        }
+        }*/
 
         private void clearBoxes()
         {
@@ -113,6 +115,51 @@ namespace QuizGenerator
             checkBoxAnswer4.IsChecked = false;
         }
 
-        
+
+        private void buttonNewQuiz_Click(object sender, RoutedEventArgs e)
+        {
+            //Jeszcze nie dokończone
+            quiz = new Quiz();
+        }
+
+
+        private void buttonSaveQuiz_Click(object sender, RoutedEventArgs e)
+        {
+            //Wybór lokalizacji zapisu pliku
+            SaveFileDialog saveFileDialog = new SaveFileDialog();
+            saveFileDialog.Filter = "Text files(*.txt) | *.txt"; //Użytkownik może zapisać plik tylko jako plik tekstowy
+            saveFileDialog.Title = "Wybierz plik, do którego zostanie zapisany quiz";
+            saveFileDialog.InitialDirectory = Directory.GetCurrentDirectory();
+            if (saveFileDialog.ShowDialog() == true)
+            {
+                var filepath = saveFileDialog.FileName;
+                Console.WriteLine(filepath);
+                quiz.QuizName = textBoxQuizName.Text;
+                Cesar cesar = new Cesar();
+                QuizMeneger qm = new QuizMeneger(quiz, cesar);
+                qm.saveQuizToFile(filepath);
+            }
+
+        }
+
+        private void buttonLoadQuiz_Click(object sender, RoutedEventArgs e)
+        {
+            //Wybór pliku do odczytania
+            OpenFileDialog openFileDialog = new OpenFileDialog();
+            openFileDialog.Filter = "Text files (*.txt)|*.txt"; //Użytkownik może wybrać tylko plik tekstowy
+            openFileDialog.Title = "Wybierz plik, z którego zostanie wczytany quiz.";
+            openFileDialog.Multiselect = false; //Użytkownik może wybrać tylko jeden plik
+            openFileDialog.InitialDirectory = Directory.GetCurrentDirectory();
+
+
+            if (openFileDialog.ShowDialog() == true)
+            {
+                var filepath = openFileDialog.FileName;
+                Console.WriteLine(filepath); //Wyświetli w konsoli ścieżkę wybranego pliku
+                //Tu do dokończenia
+            }
+
+        }
+       
     }
 }

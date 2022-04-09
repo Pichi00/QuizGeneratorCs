@@ -18,14 +18,14 @@ namespace QuizGenerator
             Encryption = encryption;
         }
 
-        public void saveQuizToFile(string filename)
+        public void saveQuizToFile(string filepath)
         {
             string text = Encryption.Encrypt(Quiz);
             string docPath = Directory.GetCurrentDirectory(); //Pobierze ścierzkę używaną przez program (.\bin\Debug) 
-            File.WriteAllText(Path.Combine(docPath, filename), text);
-            Console.WriteLine(Path.Combine(docPath, filename)); // Wyświetli ścieżkę zapisu pliku w konsoli
-           // Console.WriteLine(text);
-           // Console.WriteLine(Encryption.Decrypt(text));  // test deszyfrowania
+            File.WriteAllText(filepath, text);
+            //Console.WriteLine(filepath); // Wyświetli ścieżkę zapisu pliku w konsoli
+            //Console.WriteLine(text);
+            //Console.WriteLine(Encryption.Decrypt(text));  // test deszyfrowania
 
         }
     }

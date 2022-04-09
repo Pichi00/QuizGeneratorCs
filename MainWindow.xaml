@@ -43,9 +43,9 @@
                 <ColumnDefinition Width="1*"/>
                 <ColumnDefinition Width="1*"/>
             </Grid.ColumnDefinitions>
-            <Button x:Name="buttonNewQuiz"  Content="Nowy quiz" Grid.Column="0" />
-            <Button x:Name="buttonSaveQuiz" Content="Zapisz quiz" Grid.Column="1"/>
-            <Button x:Name="buttonLoadQUiz" Content="Wczytaj quiz" Grid.Column="2" />
+            <Button x:Name="buttonNewQuiz"  Content="Nowy quiz" Grid.Column="0" Click="buttonNewQuiz_Click" />
+            <Button x:Name="buttonSaveQuiz" Content="Zapisz quiz" Grid.Column="1" Click="buttonSaveQuiz_Click"/>
+            <Button x:Name="buttonLoadQuiz" Content="Wczytaj quiz" Grid.Column="2" Click="buttonLoadQuiz_Click" />
         </Grid>
 
 

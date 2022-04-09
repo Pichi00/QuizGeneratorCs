@@ -21,12 +21,19 @@ namespace QuizGenerator
         public void saveQuizToFile(string filepath)
         {
             string text = Encryption.Encrypt(Quiz);
-            string docPath = Directory.GetCurrentDirectory(); //Pobierze ścierzkę używaną przez program (.\bin\Debug) 
             File.WriteAllText(filepath, text);
-            //Console.WriteLine(filepath); // Wyświetli ścieżkę zapisu pliku w konsoli
+            Console.WriteLine(filepath); // Wyświetli ścieżkę zapisu pliku w konsoli
             //Console.WriteLine(text);
             //Console.WriteLine(Encryption.Decrypt(text));  // test deszyfrowania
 
+        }
+
+        public Quiz loadQuizFromFile(string filepath)
+        {
+            //Do dokończenia
+            Quiz quiz = new Quiz();
+            return quiz;
+            
         }
     }
 }

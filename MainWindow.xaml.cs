@@ -156,7 +156,10 @@ namespace QuizGenerator
             {
                 var filepath = openFileDialog.FileName;
                 Console.WriteLine(filepath); //Wyświetli w konsoli ścieżkę wybranego pliku
-                //Tu do dokończenia
+
+                Cesar cesar = new Cesar();
+                QuizMeneger qm = new QuizMeneger(quiz, cesar);
+                quiz = qm.loadQuizFromFile(filepath);
             }
 
         }

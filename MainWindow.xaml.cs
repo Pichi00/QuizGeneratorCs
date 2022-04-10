@@ -54,14 +54,15 @@ namespace QuizGenerator
 
         private void buttonEdit_Click(object sender, RoutedEventArgs e)
         {
+            var lbox = listBoxQuestions;
+            var id = lbox.SelectedIndex;
             if (isNotEmpty(textBoxQuestion) &
                 isNotEmpty(textBoxAnswer1) &
                 isNotEmpty(textBoxAnswer2) &
                 isNotEmpty(textBoxAnswer3) &
-                isNotEmpty(textBoxAnswer4))
+                isNotEmpty(textBoxAnswer4) &
+                (lbox.SelectedIndex > -1 && id > -1 && quiz.questions[id] != null))
             {
-
-                var lbox = listBoxQuestions;
                 Answer a1 = new Answer(textBoxAnswer1.Text, (bool)checkBoxAnswer1.IsChecked);
                 Answer a2 = new Answer(textBoxAnswer2.Text, (bool)checkBoxAnswer2.IsChecked);
                 Answer a3 = new Answer(textBoxAnswer3.Text, (bool)checkBoxAnswer3.IsChecked);
@@ -70,8 +71,8 @@ namespace QuizGenerator
 
                 Question question = new Question(textBoxQuestion.Text, answers);
 
-                quiz.questions[lbox.SelectedIndex] = question;
-                lbox.Items[lbox.SelectedIndex] = question.Text;
+                quiz.questions[id] = question;
+                lbox.Items[id] = question.Text;
                 clearBoxes();
             }
 
@@ -144,7 +145,15 @@ namespace QuizGenerator
         private void buttonNewQuiz_Click(object sender, RoutedEventArgs e)
         {
             //Jeszcze nie dokończone
-            quiz = new Quiz();
+            MessageBoxResult messageBoxResult = System.Windows.MessageBox.Show("Czy na pewno chcesz utworzyć nowy quiz?\n(Niezapisane zmiany zostaną utracone)", "Utwórz nowy quiz", System.Windows.MessageBoxButton.YesNo);
+            if (messageBoxResult == MessageBoxResult.Yes)
+            {
+                quiz = new Quiz();
+                textBoxQuizName.Text = "";
+                updateListBox();
+                clearBoxes();
+            }
+                
         }
 
 
@@ -189,7 +198,9 @@ namespace QuizGenerator
                 QuizManager qm = new QuizManager(quiz, cesar);
                 quiz = qm.loadQuizFromFile(filepath);
                 updateListBox();
+                clearBoxes();
                 textBoxQuizName.Text = quiz.QuizName;
+
             }
 
         }
@@ -205,5 +216,10 @@ namespace QuizGenerator
             return true;
         }
 
+        private void buttonClearBoxes_Click(object sender, RoutedEventArgs e)
+        {
+            listBoxQuestions.SelectedItem = null;
+            clearBoxes();
+        }
     }
 }

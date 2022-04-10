@@ -44,7 +44,7 @@ namespace QuizGenerator
                 Answer[] answers = { a1, a2, a3, a4 };
 
                 Question question = new Question(textBoxQuestion.Text, answers);
-                listBoxQuestions.Items.Add(question);
+                listBoxQuestions.Items.Add(question.Text);
                 quiz.addQuestion(question);
                 clearBoxes();
             }
@@ -189,6 +189,7 @@ namespace QuizGenerator
                 QuizManager qm = new QuizManager(quiz, cesar);
                 quiz = qm.loadQuizFromFile(filepath);
                 updateListBox();
+                textBoxQuizName.Text = quiz.QuizName;
             }
 
         }

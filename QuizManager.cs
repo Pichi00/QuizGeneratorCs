@@ -61,7 +61,7 @@ namespace QuizGenerator
                     }
                     else
                     {
-                        string aText = lines[5 * i + j].Substring(0, lines[5 * i + j].Length - 1);
+                        string aText = lines[5 * i + j].Substring(0, lines[5 * i + j].Length - 2);
                         bool aCorr = (lines[5 * i + j][lines[5 * i + j].Length - 1] == '1');
                         answers[j - 2] = new Answer(aText, aCorr);
                     }

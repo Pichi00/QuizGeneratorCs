@@ -46,7 +46,6 @@ namespace QuizGenerator
                 Question question = new Question(textBoxQuestion.Text, answers);
                 listBoxQuestions.Items.Add(question);
                 quiz.addQuestion(question);
-                //autosave(quiz);
                 clearBoxes();
             }
             
@@ -55,6 +54,26 @@ namespace QuizGenerator
 
         private void buttonEdit_Click(object sender, RoutedEventArgs e)
         {
+            if (isNotEmpty(textBoxQuestion) &
+                isNotEmpty(textBoxAnswer1) &
+                isNotEmpty(textBoxAnswer2) &
+                isNotEmpty(textBoxAnswer3) &
+                isNotEmpty(textBoxAnswer4))
+            {
+
+                var lbox = listBoxQuestions;
+                Answer a1 = new Answer(textBoxAnswer1.Text, (bool)checkBoxAnswer1.IsChecked);
+                Answer a2 = new Answer(textBoxAnswer2.Text, (bool)checkBoxAnswer2.IsChecked);
+                Answer a3 = new Answer(textBoxAnswer3.Text, (bool)checkBoxAnswer3.IsChecked);
+                Answer a4 = new Answer(textBoxAnswer4.Text, (bool)checkBoxAnswer4.IsChecked);
+                Answer[] answers = { a1, a2, a3, a4 };
+
+                Question question = new Question(textBoxQuestion.Text, answers);
+
+                quiz.questions[lbox.SelectedIndex] = question;
+                lbox.Items[lbox.SelectedIndex] = question.Text;
+                clearBoxes();
+            }
 
         }
 
@@ -77,7 +96,6 @@ namespace QuizGenerator
         {
             var lbox = sender as ListBox;
             var id = lbox.SelectedIndex;
-            Console.WriteLine(id);
             if (lbox.SelectedIndex > -1 && id > -1 && quiz.questions[id] != null)
             {                
           
@@ -101,15 +119,6 @@ namespace QuizGenerator
             
         }
 
-       /* private void autosave(Quiz quiz)
-        {
-            quiz.QuizName = textBoxQuizName.Text;
-            Cesar cesar = new Cesar();
-            QuizMeneger qm = new QuizMeneger(quiz, cesar);
-            qm.saveQuizToFile("quiz1.txt");
-
-        }*/
-
         private void clearBoxes()
         {
             textBoxQuestion.Text = "";
@@ -124,6 +133,14 @@ namespace QuizGenerator
         }
 
 
+        private void updateListBox()
+        {
+            listBoxQuestions.Items.Clear();
+            foreach (var question in quiz.questions)
+                listBoxQuestions.Items.Add(question.Text);            
+        }
+
+
         private void buttonNewQuiz_Click(object sender, RoutedEventArgs e)
         {
             //Jeszcze nie dokończone
@@ -133,20 +150,24 @@ namespace QuizGenerator
 
         private void buttonSaveQuiz_Click(object sender, RoutedEventArgs e)
         {
-            //Wybór lokalizacji zapisu pliku
-            SaveFileDialog saveFileDialog = new SaveFileDialog();
-            saveFileDialog.Filter = "Text files(*.txt) | *.txt"; //Użytkownik może zapisać plik tylko jako plik tekstowy
-            saveFileDialog.Title = "Wybierz plik, do którego zostanie zapisany quiz";
-            saveFileDialog.InitialDirectory = Directory.GetCurrentDirectory();
-            if (saveFileDialog.ShowDialog() == true)
+            if (isNotEmpty(textBoxQuizName))
             {
-                var filepath = saveFileDialog.FileName;
-                Console.WriteLine(filepath);
-                quiz.QuizName = textBoxQuizName.Text;
-                Cesar cesar = new Cesar();
-                QuizManager qm = new QuizManager(quiz, cesar);
-                qm.saveQuizToFile(filepath);
+                //Wybór lokalizacji zapisu pliku
+                SaveFileDialog saveFileDialog = new SaveFileDialog();
+                saveFileDialog.Filter = "Text files(*.txt) | *.txt"; //Użytkownik może zapisać plik tylko jako plik tekstowy
+                saveFileDialog.Title = "Wybierz plik, do którego zostanie zapisany quiz";
+                saveFileDialog.InitialDirectory = Directory.GetCurrentDirectory();
+                if (saveFileDialog.ShowDialog() == true)
+                {
+                    var filepath = saveFileDialog.FileName;
+                    Console.WriteLine(filepath);
+                    quiz.QuizName = textBoxQuizName.Text;
+                    Cesar cesar = new Cesar();
+                    QuizManager qm = new QuizManager(quiz, cesar);
+                    qm.saveQuizToFile(filepath);
+                }
             }
+           
 
         }
 
@@ -167,6 +188,7 @@ namespace QuizGenerator
                 Cesar cesar = new Cesar();
                 QuizManager qm = new QuizManager(quiz, cesar);
                 quiz = qm.loadQuizFromFile(filepath);
+                updateListBox();
             }
 
         }
@@ -175,7 +197,7 @@ namespace QuizGenerator
         {
             if (tb.Text.Trim() == "")
             {
-                tb.SetError("Field cannot be empty.");
+                tb.SetError("Pole nie może być puste.");
                 return false;
             }
             tb.SetError("");

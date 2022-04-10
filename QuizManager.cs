@@ -43,25 +43,32 @@ namespace QuizGenerator
             Console.WriteLine(text);
 
             string[] lines = text.Split(new char[] { '\n' });
-            int line_num = 0;
 
-            string questionText;
-            Answer[] answers = new Answer[4];
-            foreach (string line in lines)
+            
+            quiz.QuizName = lines[0];
+            int questionsAmount = (lines.Count() - 2) / 5;
+            Console.Write(questionsAmount);
+            for (int i=0; i< questionsAmount; i++)
             {
                 
-                if(line_num == 0)
+                string questionText = "";
+                Answer[] answers = new Answer[4];
+                for (int j=1; j <= 5; j++)
                 {
-                    quiz.QuizName = line;
+                    if (j == 1)
+                    {
+                        questionText = lines[5*i+j];
+                    }
+                    else
+                    {
+                        string aText = lines[5 * i + j].Substring(0, lines[5 * i + j].Length - 1);
+                        bool aCorr = (lines[5 * i + j][lines[5 * i + j].Length - 1] == '1');
+                        answers[j - 2] = new Answer(aText, aCorr);
+                    }
                 }
-                else if(line_num % 5 == 1){
-                    questionText = line;
-                }
-                else
-                {
-                    answers[(line_num % 5) - 2].Text = line;
-                }
-                line_num++;
+                Question question = new Question(questionText,answers);
+                quiz.questions.Add(question);
+
             }
             return quiz;
         }

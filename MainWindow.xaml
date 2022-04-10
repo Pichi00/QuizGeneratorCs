@@ -11,7 +11,7 @@
             <Setter Property="FontSize" Value="20"/>
             <Setter Property="Margin" Value="5"/>
         </Style>
-        <Style TargetType="TextBox">
+        <Style TargetType="local:TextBoxWithErrorProvider">
             <Setter Property="FontSize" Value="20"/>
             <Setter Property="Padding" Value="10,0,10,0"/>
         </Style>

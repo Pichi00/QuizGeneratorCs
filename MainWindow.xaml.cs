@@ -31,17 +31,25 @@ namespace QuizGenerator
 
         private void buttonAdd_Click(object sender, RoutedEventArgs e)
         {
-            Answer a1 = new Answer(textBoxAnswer1.Text, (bool)checkBoxAnswer1.IsChecked);
-            Answer a2 = new Answer(textBoxAnswer2.Text, (bool)checkBoxAnswer2.IsChecked);
-            Answer a3 = new Answer(textBoxAnswer3.Text, (bool)checkBoxAnswer3.IsChecked);
-            Answer a4 = new Answer(textBoxAnswer4.Text, (bool)checkBoxAnswer4.IsChecked);
-            Answer[] answers = { a1, a2, a3, a4 };
+            if(isNotEmpty(textBoxQuestion) &
+                isNotEmpty(textBoxAnswer1) &
+                isNotEmpty(textBoxAnswer2) &
+                isNotEmpty(textBoxAnswer3) &
+                isNotEmpty(textBoxAnswer4))
+            {
+                Answer a1 = new Answer(textBoxAnswer1.Text, (bool)checkBoxAnswer1.IsChecked);
+                Answer a2 = new Answer(textBoxAnswer2.Text, (bool)checkBoxAnswer2.IsChecked);
+                Answer a3 = new Answer(textBoxAnswer3.Text, (bool)checkBoxAnswer3.IsChecked);
+                Answer a4 = new Answer(textBoxAnswer4.Text, (bool)checkBoxAnswer4.IsChecked);
+                Answer[] answers = { a1, a2, a3, a4 };
+
+                Question question = new Question(textBoxQuestion.Text, answers);
+                listBoxQuestions.Items.Add(question);
+                quiz.addQuestion(question);
+                //autosave(quiz);
+                clearBoxes();
+            }
             
-            Question question = new Question(textBoxQuestion.Text, answers);
-            listBoxQuestions.Items.Add(question);
-            quiz.addQuestion(question);            
-            //autosave(quiz);
-            clearBoxes();
 
         }
 
@@ -156,10 +164,23 @@ namespace QuizGenerator
             {
                 var filepath = openFileDialog.FileName;
                 Console.WriteLine(filepath); //Wyświetli w konsoli ścieżkę wybranego pliku
-                //Tu do dokończenia
+                Cesar cesar = new Cesar();
+                QuizManager qm = new QuizManager(quiz, cesar);
+                quiz = qm.loadQuizFromFile(filepath);
             }
 
         }
-       
+
+        private bool isNotEmpty(TextBoxWithErrorProvider tb)
+        {
+            if (tb.Text.Trim() == "")
+            {
+                tb.SetError("Field cannot be empty.");
+                return false;
+            }
+            tb.SetError("");
+            return true;
+        }
+
     }
 }

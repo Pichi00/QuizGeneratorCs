@@ -30,3 +30,6 @@ E:\Studia\StudiaSemIV\ProgramowanieObiektowe\QuizGeneratorCs\QuizGeneratorCs-mai
 E:\Studia\StudiaSemIV\ProgramowanieObiektowe\QuizGeneratorCs\QuizGeneratorCs-main\obj\Debug\QuizGenerator.csproj.CoreCompileInputs.cache
 E:\Studia\StudiaSemIV\ProgramowanieObiektowe\QuizGeneratorCs\QuizGeneratorCs-main\obj\Debug\QuizGenerator.exe
 E:\Studia\StudiaSemIV\ProgramowanieObiektowe\QuizGeneratorCs\QuizGeneratorCs-main\obj\Debug\QuizGenerator.pdb
+E:\Studia\StudiaSemIV\ProgramowanieObiektowe\QuizGenerator\obj\Debug\TextBoxWithErrorProvider.g.cs
+E:\Studia\StudiaSemIV\ProgramowanieObiektowe\QuizGenerator\obj\Debug\GeneratedInternalTypeHelper.g.cs
+E:\Studia\StudiaSemIV\ProgramowanieObiektowe\QuizGenerator\obj\Debug\TextBoxWithErrorProvider.baml

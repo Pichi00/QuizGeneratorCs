@@ -145,7 +145,7 @@ namespace QuizGenerator
         private void buttonNewQuiz_Click(object sender, RoutedEventArgs e)
         {
             //Jeszcze nie dokończone
-            MessageBoxResult messageBoxResult = System.Windows.MessageBox.Show("Czy na pewno chcesz utworzyć nowy quiz?\n(Niezapisane zmiany zostaną utracone)", "Utwórz nowy quiz", System.Windows.MessageBoxButton.YesNo);
+            MessageBoxResult messageBoxResult = System.Windows.MessageBox.Show("Are you sure you want to create new quiz?\n(Unsaved changes may be lost)", "Create new quiz", System.Windows.MessageBoxButton.YesNo);
             if (messageBoxResult == MessageBoxResult.Yes)
             {
                 quiz = new Quiz();
@@ -164,7 +164,7 @@ namespace QuizGenerator
                 //Wybór lokalizacji zapisu pliku
                 SaveFileDialog saveFileDialog = new SaveFileDialog();
                 saveFileDialog.Filter = "Text files(*.txt) | *.txt"; //Użytkownik może zapisać plik tylko jako plik tekstowy
-                saveFileDialog.Title = "Wybierz plik, do którego zostanie zapisany quiz";
+                saveFileDialog.Title = "Select file witch will contain the quiz";
                 saveFileDialog.InitialDirectory = Directory.GetCurrentDirectory();
                 if (saveFileDialog.ShowDialog() == true)
                 {

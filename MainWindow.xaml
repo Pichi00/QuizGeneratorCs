@@ -46,7 +46,7 @@
             <RowDefinition Height="5*"/>
         </Grid.RowDefinitions>
         <StackPanel>
-            <Label Content="Nazwa Quizu"/>
+            <Label Content="Quiz name"/>
             <local:TextBoxWithErrorProvider x:Name="textBoxQuizName"/>
         </StackPanel>
 
@@ -56,17 +56,17 @@
                 <ColumnDefinition Width="1*"/>
                 <ColumnDefinition Width="1*"/>
             </Grid.ColumnDefinitions>
-            <Button x:Name="buttonNewQuiz"  Content="Nowy quiz" Grid.Column="0" Click="buttonNewQuiz_Click" />
-            <Button x:Name="buttonSaveQuiz" Content="Zapisz quiz" Grid.Column="1" Click="buttonSaveQuiz_Click"/>
-            <Button x:Name="buttonLoadQuiz" Content="Wczytaj quiz" Grid.Column="2" Click="buttonLoadQuiz_Click" />
+            <Button x:Name="buttonNewQuiz"  Content="New quiz" Grid.Column="0" Click="buttonNewQuiz_Click" />
+            <Button x:Name="buttonSaveQuiz" Content="Save quiz" Grid.Column="1" Click="buttonSaveQuiz_Click"/>
+            <Button x:Name="buttonLoadQuiz" Content="Load quiz" Grid.Column="2" Click="buttonLoadQuiz_Click" />
         </Grid>
 
 
         <StackPanel Background="#FF3C3B56" Grid.Row="1">
-            <Label Content="Treść pytania"/>
+            <Label Content="Question"/>
             <local:TextBoxWithErrorProvider x:Name="textBoxQuestion" />
 
-            <Label Content="Odpowiedź 1"/>
+            <Label Content="Answer 1"/>
             <Grid>
                 <Grid.ColumnDefinitions>
                     <ColumnDefinition Width="10*"/>
@@ -76,7 +76,7 @@
                 <CheckBox x:Name="checkBoxAnswer1" Grid.Column="1"/>
             </Grid>
 
-            <Label Content="Odpowiedź 2"/>
+            <Label Content="Answer 2"/>
             <Grid>
                 <Grid.ColumnDefinitions>
                     <ColumnDefinition Width="10*"/>
@@ -86,7 +86,7 @@
                 <CheckBox x:Name="checkBoxAnswer2" Grid.Column="1"/>
             </Grid>
 
-            <Label Content="Odpowiedź 3"/>
+            <Label Content="Answer 3"/>
             <Grid>
                 <Grid.ColumnDefinitions>
                     <ColumnDefinition Width="10*"/>
@@ -96,7 +96,7 @@
                 <CheckBox x:Name="checkBoxAnswer3" Grid.Column="1"/>
             </Grid>
 
-            <Label Content="Odpowiedź 4"/>
+            <Label Content="Answer 4"/>
             <Grid>
                 <Grid.ColumnDefinitions>
                     <ColumnDefinition Width="10*"/>
@@ -113,10 +113,10 @@
                     <ColumnDefinition Width="1*"/>
                     <ColumnDefinition Width="1*"/>
                 </Grid.ColumnDefinitions>
-                <Button x:Name="buttonAdd"  Content="Dodaj pytanie" Grid.Column="0" Click="buttonAdd_Click"/>
-                <Button x:Name="buttonEdit" Content="Edytuj pytania" Grid.Column="1" Click="buttonEdit_Click"/>
-                <Button x:Name="buttonDelete" Content="Usuń pytanie" Grid.Column="2" Click="buttonDelete_Click"/>
-                <Button x:Name="buttonClearBoxes" Content="Wyczyść pola" Grid.Column="3" Click="buttonClearBoxes_Click"/>
+                <Button x:Name="buttonAdd"  Content="Add question" Grid.Column="0" Click="buttonAdd_Click"/>
+                <Button x:Name="buttonEdit" Content="Edit question" Grid.Column="1" Click="buttonEdit_Click"/>
+                <Button x:Name="buttonDelete" Content="Delete question" Grid.Column="2" Click="buttonDelete_Click"/>
+                <Button x:Name="buttonClearBoxes" Content="Clear boxes" Grid.Column="3" Click="buttonClearBoxes_Click"/>
             </Grid>
         </StackPanel>
         <ListBox x:Name="listBoxQuestions" 
